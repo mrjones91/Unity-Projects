@@ -14,7 +14,7 @@ public class BallMovement : MonoBehaviour {
 		//speed = 2;
 		force = new Vector3(3f, 5f, 0f);
 		rigidbody.velocity = force;
-		constantForce.force = new Vector3(-.5f, -1.5f, 0f);
+		//constantForce.force = new Vector3(-.5f, -1.5f, 0f);
 		
 		//InvokeRepeating("IncreaseBallVelocity", 2, 1f);
 	}

@@ -9,8 +9,13 @@ public class Background : MonoBehaviour {
 	private bool loop, inBounds;
 	private int currentFrame;
 	private Vector3 force;
+	Color bg;
 	
-	// Use this for initialization
+	void Awake()
+	{
+		bg = Color.white;
+		bg.a = .30f;
+	}
 	void Start () 
 	{
 		scrollSpeed = 0.5f;
@@ -18,6 +23,7 @@ public class Background : MonoBehaviour {
 		currentFrame = 0;
 		secondsToWait = 1/FPS;
 		renderer.material.mainTexture = frames[currentFrame];
+		renderer.material.color = bg;
 		StartCoroutine(Animate());
 		loop = inBounds = true;
 		
