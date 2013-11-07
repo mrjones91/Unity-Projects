@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BlockGame : MonoBehaviour {
+public class BlockGame : RtBehaviour {
 	public ScoreScript scoreKeeper;
 	
 	private int bricks, level, lives;

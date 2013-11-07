@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MenuScene : MonoBehaviour {
+public class MenuScene : RtBehaviour {
 	private Ray ray;
 	private RaycastHit rayCastHit;
 	//private int gp;
-	
-	public ScoreScript scoreKeeper;
+
 	
 	public GUIText HiScore;
 	public GUIText PlayButton;

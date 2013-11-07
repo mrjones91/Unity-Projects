@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MainGame : MonoBehaviour {
+public class MainGame : RtBehaviour {
 	
-	public GUIText GuiScore;
-	public GUIText GuiHighScore;
+	
 	
 	private GameObject ball;
 	//private int score = 0;

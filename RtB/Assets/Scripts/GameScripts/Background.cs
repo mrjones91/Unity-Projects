@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Background : MonoBehaviour {
+public class Background : RtBehaviour {
 
 	public Texture[] frames;
 	public float FPS;
 	private float secondsToWait, scrollSpeed, offset, xOffset, yOffset, x, y;
-	private bool loop, inBounds;
+	private bool inBounds;
 	private int currentFrame;
 	private Vector3 force;
 	Color bg;
@@ -25,22 +25,11 @@ public class Background : MonoBehaviour {
 		renderer.material.mainTexture = frames[currentFrame];
 		renderer.material.color = bg;
 		StartCoroutine(Animate());
-		loop = inBounds = true;
+		inBounds = true;
 		
 		force = new Vector3(50f, 80f, 0f);
 		rigidbody.velocity = force;
-		//rigidbody.constantForce.force = new Vector3(20f, -15f, 0f);
-		
-		
-	}
-	
-	void Update ()
-	{
-		
-		
-		
-		//transform.position.x
-		//renderer.material.mainTextureOffset = new Vector2(offset, offset);
+
 	}
 	
 	void Scroll()
@@ -58,7 +47,7 @@ public class Background : MonoBehaviour {
 	{
 				
 		yield return new WaitForSeconds(secondsToWait);
-		print (currentFrame);
+
 		if (currentFrame == 14)
 		{
 			currentFrame = 0;
@@ -69,7 +58,7 @@ public class Background : MonoBehaviour {
 		renderer.material.mainTexture = frames[currentFrame];
 		
 		StartCoroutine(Animate());
-		//Scroll ();
+
 	}
 
 }

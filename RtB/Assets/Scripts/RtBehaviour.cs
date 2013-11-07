@@ -1,12 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RtBehavior : MonoBehaviour {
+public class RtBehaviour : MonoBehaviour {
 	
-	protected BlockGame game;
-	protected ScoreScript score;
+	public GUIText GuiScore;
+	public GUIText GuiHighScore;
+	
+	public BlockGame game;
+	public ScoreScript score;
+	public PaddleMovement paddle;
 	protected PowerUpController powerUp;
 	protected BrickScript brick;
+	
 	// Use this for initialization
 	void Start () {
 	
