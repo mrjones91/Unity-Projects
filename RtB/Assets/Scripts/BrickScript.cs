@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BrickScript : MonoBehaviour {
-	public ScoreScript scoreKeeper;
-	public BlockGame game;
+public class BrickScript : RtBehaviour {
+
 	public int type;
 	float points;
 	public MeshRenderer mesh;
-	
+	public PowerUpController power;
 	
 	//public MainGame mainGameScript;
 	void Start () {
@@ -77,16 +76,14 @@ public class BrickScript : MonoBehaviour {
 	
 	void OnCollisionEnter(Collision col)
 	{
-		//mainGameScript.UpdateScore(BrickType);
-		//mesh.material = 
 		
-		//Debug.Log ("Total Bricks: " + PlayerPrefs.GetInt("BricksLeft") + "Current Level: " + PlayerPrefs.GetInt("currentLvl"));
-		//Score.score += points;
 		Destroy (gameObject);
-		scoreKeeper.AddScore(points);
+		score.AddScore(points);
 		game.AddBrick(1);
-		
-		
+		if (power != null)
+		{
+			power.gameObject.SetActive(true);
+		}
 	}
 	
 	void Update()

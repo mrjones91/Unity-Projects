@@ -44,16 +44,21 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Background.cs" />
      <Compile Include="Assets\Scripts\BallMovement.cs" />
-     <Compile Include="Assets\Scripts\BlockGame.cs" />
      <Compile Include="Assets\Scripts\BrickScript.cs" />
-     <Compile Include="Assets\Scripts\MainGame.cs" />
-     <Compile Include="Assets\Scripts\MenuScene.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\Background.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\BlockGame.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\MainGame.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\MenuScene.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\ScoreScript.cs" />
      <Compile Include="Assets\Scripts\PaddleMovement.cs" />
-     <Compile Include="Assets\Scripts\PowerUpController.cs" />
-     <Compile Include="Assets\Scripts\RtBehavior.cs" />
-     <Compile Include="Assets\Scripts\ScoreScript.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\BallPowerUp.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\ExplodePowerUp.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\PaddlePowerUp.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\PowerUpController.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\SafetyPowerUp.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\ShootPowerUp.cs" />
+     <Compile Include="Assets\Scripts\RtBehaviour.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

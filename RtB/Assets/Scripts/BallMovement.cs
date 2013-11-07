@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BallMovement : MonoBehaviour {
+public class BallMovement : RtBehaviour 
+{
 	
 
-	public BlockGame game;
+	
 	
 	//private int speed;
 	private Vector3 force;
@@ -25,28 +26,18 @@ public class BallMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//rigidbody.AddForce (0, -5, 0, ForceMode.Acceleration);
-		
-		
-//		if ( (Mathf.Abs(rigidbody.velocity.x) > 12f) || (Mathf.Abs(rigidbody.velocity.y) > 12f) )
-//		{
-//			
-//			rigidbody.AddForce(-1f, -1f, 0, ForceMode.Impulse);
-//			Debug.Log ("velocity: " + rigidbody.velocity);
-//		}
-		//Debug.Log ("velocity: " + rigidbody.velocity);
-		if (transform.position.y < -5)
+
+		if (transform.position.y < -6)
 		{
 			game.GameOver();
-			//Show a GUItext then go to menu
-			//Application.LoadLevel("menu");
+
 		}
 	}
 	
 	void OnCollisionEnter(Collision col)
 	{
 		
-		//if (col.gameObject.tag == "Brick")
+		if (col.gameObject.tag != "PowerUp")
 		{
 			if (col.transform.position.x > rigidbody.transform.position.x)
 			{

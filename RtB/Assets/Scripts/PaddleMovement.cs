@@ -1,19 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PaddleMovement : MonoBehaviour {
+public class PaddleMovement : RtBehaviour {
 	
 		
 	private Ray ray;
 	private RaycastHit rayCastHit;
 	private Vector3 position;
-	
+	private Vector3 longPaddle, shortPaddle;
 	// Use this for initialization
 	void Start () {
 		
 		//ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		 
 		position = new Vector3(0, -3, 0);
+		longPaddle = new Vector3 ( 2f, 0.2f, 1f);
+		shortPaddle = new Vector3 ( .5f, 0.2f, 1f);
 	}
 	
 	// Update is called once per frame
@@ -46,6 +48,26 @@ public class PaddleMovement : MonoBehaviour {
 				position.x += .15f;
 				transform.position = position;
 			}
+		}
+	}
+	
+	public void Grow(int size)
+	{
+		if(size == 1)
+		{
+			gameObject.transform.localScale = longPaddle;
+		}
+		if(size == 0)
+		{
+			gameObject.transform.localScale = shortPaddle;
+		}
+	}
+	
+	void OnCollisionEnter(Collision collision)
+	{
+		if (collision.gameObject.GetComponent< PaddlePowerUp >() != null )
+		{
+			
 		}
 	}
 }
