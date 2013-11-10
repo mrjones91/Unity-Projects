@@ -5,7 +5,7 @@ public class SafetyPowerUp : PowerUpController {
 	
 	public GameObject safebar;
 	private Quaternion rotation;
-	private float time;
+	
 	
 	public override void Awake()
 	{
@@ -16,17 +16,13 @@ public class SafetyPowerUp : PowerUpController {
 	public override void Start ()
 	{
 		base.Start ();
-		time = 10;
+		
 	}
 	
 	public override void Update ()
 	{
-		time -= Time.deltaTime;
 		
-		if (time <= 0)
-		{
-			//destroy the bar...
-		}
+		
 		if ( gameObject.activeSelf )
 		{
 			position.y -= .10f;
@@ -48,6 +44,9 @@ public class SafetyPowerUp : PowerUpController {
 		}
 	
 	}
+	
+	
+	
 
 	
 }
