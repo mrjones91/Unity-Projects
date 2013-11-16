@@ -17,7 +17,17 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+<<<<<<< .mine
+						GlobalSection(MonoDevelopProperties) = preSolution
+=======
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+												GlobalSection(MonoDevelopProperties) = preSolution
+>>>>>>> .r7
+=======
 																	GlobalSection(MonoDevelopProperties) = preSolution
+>>>>>>> .r8
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
@@ -34,6 +44,12 @@ Global
 		$3.inheritsSet = Mono
 		$3.inheritsScope = text/plain
 		$3.scope = text/plain
+		$0.DotNetNamingPolicy = $4
+		$4.DirectoryNamespaceAssociation = None
+		$4.ResourceNamePolicy = FileFormatDefault
+		$0.StandardHeader = $5
+		$5.Text = 
+		$5.IncludeInNewFiles = True
 	EndGlobalSection
 
 EndGlobal
