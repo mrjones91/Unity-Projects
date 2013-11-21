@@ -2,12 +2,13 @@
 using System.Collections;
 
 public class TouchController : TBehaviour {
-
+	
 	private Ray ray;
 	private RaycastHit rayCastHit;
 	private ArrayList Positions;
 	private int tp;
 	private int[] notes;
+	
 	public override void Awake()
 	{		
 		base.Awake();
@@ -23,6 +24,9 @@ public class TouchController : TBehaviour {
 	}
 	
 	void Update () {
+		
+		
+		
 		
 		if(Input.GetMouseButton(0) )
 		{
@@ -52,6 +56,7 @@ public class TouchController : TBehaviour {
 				
 					embo.PlayNote();
 					
+					
 				}
 			}
 			
@@ -59,7 +64,9 @@ public class TouchController : TBehaviour {
 		
 		if (Input.GetMouseButtonDown(0) )
 		{
-			if (rayCastHit.transform.name == "Pause")
+			if (Physics.Raycast(ray, out rayCastHit) )
+			{
+				if (rayCastHit.transform.name == "Pause")
 				{
 					if (pause.Paused)
 					{
@@ -70,6 +77,9 @@ public class TouchController : TBehaviour {
 						pause.Paused = true;
 					}
 				}
+			}
+			
+			
 					
 		}
 		

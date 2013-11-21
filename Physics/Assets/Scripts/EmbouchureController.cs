@@ -4,8 +4,10 @@ using System.Collections;
 public class EmbouchureController : TBehaviour {
 
 	public AudioClip[] First, Second, Third, Fourth, Fifth, Sixth, Seventh;
-	ArrayList Positions;
-	private int height;
+	
+	public GUIText Note, Position, NoPo, NoNu;
+	
+	private int height, slide, num;
 	private Ray ray;
 	private RaycastHit rayCastHit;
 	
@@ -59,6 +61,7 @@ public class EmbouchureController : TBehaviour {
 				height = First.Length;
 			}
 			audio.clip = First[(int)transform.position.y];
+			NoPo.text = "There are " + First.Length + " notes on this position.";
 		}
 		if (trombone.transform.position.x == -2)
 		{
@@ -68,6 +71,7 @@ public class EmbouchureController : TBehaviour {
 				height = Second.Length;
 			}
 			audio.clip = Second[(int)transform.position.y];
+			NoPo.text = "There are " + Second.Length + " notes on this position.";
 		}
 		if (trombone.transform.position.x == -1)
 		{
@@ -77,6 +81,7 @@ public class EmbouchureController : TBehaviour {
 				height = Third.Length;
 			}
 			audio.clip = Third[(int)transform.position.y];
+			NoPo.text = "There are " + Third.Length + " notes on this position.";
 		}
 		if (trombone.transform.position.x == 0)
 		{
@@ -86,6 +91,7 @@ public class EmbouchureController : TBehaviour {
 				height = Fourth.Length;
 			}
 			audio.clip = Fourth[(int)transform.position.y];
+			NoPo.text = "There are " + Fourth.Length + " notes on this position.";
 		}
 		if (trombone.transform.position.x == 1)
 		{
@@ -95,6 +101,7 @@ public class EmbouchureController : TBehaviour {
 				height = Fifth.Length;
 			}
 			audio.clip = Fifth[(int)transform.position.y];
+			NoPo.text = "There are " + Fifth.Length + " on this position.";
 		}
 		if (trombone.transform.position.x == 2)
 		{
@@ -104,6 +111,7 @@ public class EmbouchureController : TBehaviour {
 				height = Sixth.Length;
 			}
 			audio.clip = Sixth[(int)transform.position.y];
+			NoPo.text = "There are " + Sixth.Length + " notes on this position.";
 		}
 		if (trombone.transform.position.x == 3)
 		{
@@ -113,6 +121,7 @@ public class EmbouchureController : TBehaviour {
 				height = Seventh.Length;
 			}
 			audio.clip = Seventh[(int)transform.position.y];
+			NoPo.text = "There are " + Seventh.Length + " notes on this position.";
 		}
 		if (pause.Paused)
 		{
@@ -122,5 +131,11 @@ public class EmbouchureController : TBehaviour {
 		{
 			audio.Play();
 		}
+		num = (int)embo.transform.position.y + 1;
+		slide = (int)trombone.transform.position.x + 4;
+		Note.text = audio.clip.name;
+		Position.text = "Slide Position: " + slide;
+		NoNu.text = "Note #: " + num;
+		
 	}
 }
