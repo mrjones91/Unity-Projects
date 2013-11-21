@@ -1,6 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\TouchController.cs">
+    <Files>
+      <File FileName="Assets\Scripts\TromboneController.cs" Line="39" Column="4" />
+      <File FileName="Assets\Scripts\EmbouchureController.cs" Line="119" Column="18" />
+      <File FileName="Assets\Scripts\TBehaviour.cs" Line="17" Column="1" />
+      <File FileName="Assets\Scripts\Strings.cs" Line="4" Column="25" />
+      <File FileName="Assets\Scripts\PhysicsController.cs" Line="4" Column="35" />
+      <File FileName="Assets\Scripts\TouchController.cs" Line="42" Column="7" />
+      <File FileName="Assets\Scripts\Pause.cs" Line="22" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

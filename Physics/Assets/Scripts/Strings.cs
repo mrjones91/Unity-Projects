@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Strings : MonoBehaviour {
+public class Strings :TBehaviour {
 
 	// Use this for initialization
 	void Start () {
