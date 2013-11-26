@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\GameScripts\MainGame.cs" />
      <Compile Include="Assets\Scripts\GameScripts\MenuScene.cs" />
      <Compile Include="Assets\Scripts\GameScripts\ScoreScript.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\SplashScreen.cs" />
      <Compile Include="Assets\Scripts\PaddleMovement.cs" />
      <Compile Include="Assets\Scripts\PowerUps\BallPowerUp.cs" />
      <Compile Include="Assets\Scripts\PowerUps\ExplodePowerUp.cs" />

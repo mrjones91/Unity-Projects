@@ -28,7 +28,10 @@ public class Background : RtBehaviour {
 		inBounds = true;
 		
 		force = new Vector3(50f, 80f, 0f);
-		rigidbody.velocity = force;
+		if (gameObject.name != "Cube")
+		{
+			rigidbody.velocity = force;
+		}
 
 	}
 	
