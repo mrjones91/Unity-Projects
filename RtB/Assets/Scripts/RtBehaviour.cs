@@ -9,8 +9,12 @@ public class RtBehaviour : MonoBehaviour {
 	public BlockGame game;
 	public ScoreScript score;
 	public PaddleMovement paddle;
+	
+	private bool sent;
+	
 	protected PowerUpController powerUp;
 	protected BrickScript brick;
+	protected bool paused;
 	
 	// Use this for initialization
 	void Start () {
@@ -18,7 +22,50 @@ public class RtBehaviour : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected virtual void Update () {
 	
+		if ( Input.GetKeyDown(KeyCode.Escape) )
+		{
+			BackButton();
+			
+		}
+		if ( Input.GetKeyDown(KeyCode.Menu) || Input.GetKey(KeyCode.Space) )
+		{
+			Menu();
+		}
+	}
+	
+	protected virtual void BackButton()
+	{
+		Application.Quit();
+	}
+	
+	protected virtual void Menu()
+	{
+		Object[] objects = FindObjectsOfType (typeof(GameObject));
+		foreach (GameObject go in objects)
+		{
+			if (!sent)
+			{
+				go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+			}
+			else if (sent)
+			{
+				go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
+			}
+		}
+	}
+	
+	protected virtual void OnPauseGame()
+	{
+		sent = true;
+		paused = true;
+		Time.timeScale = 0;
+	}
+	protected virtual void OnResumeGame()
+	{
+		sent = false;
+		paused = false;
+		Time.timeScale = 1;
 	}
 }

@@ -8,7 +8,7 @@ public class MenuScene : RtBehaviour {
 
 	
 	public GUIText HiScore;
-	public GUIText PlayButton;
+	public TextMesh PlayButton;
 	
 	bool displayed;
 	
@@ -47,15 +47,16 @@ public class MenuScene : RtBehaviour {
 		displayed = !displayed;
 		
 		if (displayed)
-			PlayButton.fontSize = 26;
+			PlayButton.text = "Click to Play";
 		else
-			PlayButton.fontSize = int.MinValue;
+			PlayButton.text = "";
 	}
 	// Update is called once per frame
-	void Update () {
+	protected override void Update () 
+	{
 		
 		
-		
+		base.Update();
 		if(Input.GetMouseButton(0) )
 		{
 			ray = Camera.main.ScreenPointToRay(Input.mousePosition);

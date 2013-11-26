@@ -5,30 +5,33 @@ public class PaddlePowerUp : PowerUpController {
 	
 	public bool longer;
 	
-	public override void Update ()
+	protected override void Update ()
 	{
-		if ( gameObject.activeSelf )
+		if (!paused)
 		{
-			position.y -= .10f;
-			gameObject.transform.position = position;
-		}
-		
-		if (position.y < -4f)
-		{
-			Destroy ( gameObject );
-		}
-		
-		if (collider.bounds.Intersects(paddle.collider.bounds))
-		{
-			Destroy (gameObject);
-			
-			if (longer)
+			if ( gameObject.activeSelf )
 			{
-				paddle.Grow(1);
+				position.y -= .10f;
+				gameObject.transform.position = position;
 			}
-			else if (!longer)
+			
+			if (position.y < -4f)
 			{
-				paddle.Grow(0);
+				Destroy ( gameObject );
+			}
+			
+			if (collider.bounds.Intersects(paddle.collider.bounds))
+			{
+				Destroy (gameObject);
+				
+				if (longer)
+				{
+					paddle.Grow(1);
+				}
+				else if (!longer)
+				{
+					paddle.Grow(0);
+				}
 			}
 		}
 	

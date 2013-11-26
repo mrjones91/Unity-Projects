@@ -20,8 +20,9 @@ public class SplashScreen : RtBehaviour {
 	}
 	
 	
-	void Update () 
+	protected override void Update () 
 	{
+		base.Update();
 		timer -= Time.deltaTime;
 		alpha -= .2f;
 		fade.a = alpha;

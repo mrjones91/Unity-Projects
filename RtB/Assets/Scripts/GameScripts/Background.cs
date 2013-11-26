@@ -19,10 +19,13 @@ public class Background : RtBehaviour {
 	void Start () 
 	{
 		scrollSpeed = 0.5f;
-		xOffset = yOffset = Time.time * scrollSpeed;
+		//xOffset = yOffset = Time.time * scrollSpeed;
 		currentFrame = 0;
 		secondsToWait = 1/FPS;
-		renderer.material.mainTexture = frames[currentFrame];
+		if (frames.Length > 0)
+		{
+			renderer.material.mainTexture = frames[currentFrame];
+		}
 		renderer.material.color = bg;
 		StartCoroutine(Animate());
 		inBounds = true;
@@ -31,27 +34,65 @@ public class Background : RtBehaviour {
 		if (gameObject.name != "Cube")
 		{
 			rigidbody.velocity = force;
+			
 		}
 
 	}
 	
+	protected override void Update()
+	{
+		if (gameObject.name != "Cube")
+		{
+			Scroll();
+		}
+		//xOffset += Time.deltaTime;
+		//yOffset += Time.deltaTime;
+	}
+	
 	void Scroll()
 	{
+		//fix this shit. ugh
 		if (inBounds)
 		{
 			x = Mathf.Clamp(xOffset, 7f, -7f);
-			y = Mathf.Clamp(yOffset, 12f, -10f);
-			gameObject.transform.position = new Vector3(x, y, 0);
+			y = Mathf.Clamp(yOffset, 11f, -8f);
+			gameObject.transform.position = new Vector3(x, y, 12);
+			print ("X: " + x);
+			print ("Y: " + y);
 			
 		}
 		
+	}
+	void OnCollisionEnter(Collision col)
+	{
+		if (col.transform.position.x > rigidbody.transform.position.x)
+			{
+				
+				rigidbody.AddForce(Vector3.left, ForceMode.VelocityChange);
+				
+			}
+			else if (col.transform.position.x < rigidbody.transform.position.x)
+			{
+				
+				rigidbody.AddForce(Vector3.right, ForceMode.VelocityChange);
+			}
+			if (col.transform.position.y > rigidbody.transform.position.y)
+			{
+				rigidbody.AddForce(Vector3.down);
+				//rigidbody.velocity = new Vector3(rigidbody.velocity.x, rigidbody.velocity.y, 0);
+			}
+			else if (col.transform.position.y < rigidbody.transform.position.y)
+			{
+				rigidbody.AddForce(Vector3.up);
+				//rigidbody.velocity = new Vector3(rigidbody.velocity.x, rigidbody.velocity.y, 0);
+			}
 	}
 	IEnumerator Animate()
 	{
 				
 		yield return new WaitForSeconds(secondsToWait);
 
-		if (currentFrame == 14)
+		if (currentFrame == frames.Length - 1)
 		{
 			currentFrame = 0;
 		}

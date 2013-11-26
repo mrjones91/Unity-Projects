@@ -36,13 +36,16 @@ public class BlockGame : RtBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	protected override void Update () {
+		base.Update();
+		
 		if (PlayerPrefs.GetInt("BricksLeft") == 0 )
 		{
 			NextLevel(level + 1);
 			
 		}
+		
+		
 	}
 	
 	public void NextLevel(int _level)

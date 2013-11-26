@@ -17,10 +17,13 @@ public class SafetyBarController : RtBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if (gameObject.activeSelf)
+	protected override void Update () {
+		if (!paused)
 		{
-			timeLimit -= Time.deltaTime;
+			if (gameObject.activeSelf)
+			{
+				timeLimit -= Time.deltaTime;
+			}
 		}
 		
 		if (timeLimit <= 0 || hitLimit > 2)

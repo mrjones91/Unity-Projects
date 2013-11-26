@@ -18,10 +18,7 @@ public class MainGame : RtBehaviour {
 
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 	
 	public void UpdateScore(int points)
 	{

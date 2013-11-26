@@ -16,22 +16,25 @@ public class PowerUpController : RtBehaviour {
 		position = gameObject.transform.position;
 	}
 
-	public virtual void Update () 
+	protected override void Update () 
 	{
-		if ( gameObject.activeSelf )
+		if (!paused)
 		{
-			position.y -= .10f;
-			gameObject.transform.position = position;
-		}
-		
-		if (position.y < -4f)
-		{
-			Destroy ( gameObject );
-		}
-		
-		if (collider.bounds.Intersects(paddle.collider.bounds))
-		{
-			Destroy (gameObject);
+			if ( gameObject.activeSelf )
+			{
+				position.y -= .10f;
+				gameObject.transform.position = position;
+			}
+			
+			if (position.y < -4f)
+			{
+				Destroy ( gameObject );
+			}
+			
+			if (collider.bounds.Intersects(paddle.collider.bounds))
+			{
+				Destroy (gameObject);
+			}
 		}
 	}
 	

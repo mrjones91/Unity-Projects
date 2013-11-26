@@ -86,10 +86,7 @@ public class BrickScript : RtBehaviour {
 		}
 	}
 	
-	void Update()
-	{
-		
-	}
+
 }
 
 public enum BrickType{
