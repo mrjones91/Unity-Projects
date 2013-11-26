@@ -41,7 +41,11 @@ public class TouchController : TBehaviour {
 						trombone.transform.position = new Vector3(Mathf.Clamp((int)rayCastHit.point.x, -3f, 3f), trombone.transform.position.y, 0);
 						tp = (int)trombone.transform.position.x + 3;
 						
-						embo.transform.position = new Vector3(embo.transform.position.x, 0, 0);
+						if (embo.transform.position.y > notes[tp] )
+						{
+							embo.transform.position = new Vector3(embo.transform.position.x, notes[tp] - 1, 0);
+						}
+						
 						
 					}
 					

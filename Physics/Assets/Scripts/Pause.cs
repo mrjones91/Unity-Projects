@@ -5,7 +5,7 @@ public class Pause : TBehaviour {
 
 	public bool Paused;
 	
-	public GUIText ui;
+	public TextMesh ui;
 	
 	public void Update()
 	{

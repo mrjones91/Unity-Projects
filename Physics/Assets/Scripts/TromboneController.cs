@@ -12,7 +12,7 @@ public class TromboneController : TBehaviour {
 		
 		//ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		 
-		position = new Vector3(-3, -2, 0);
+		position = gameObject.transform.position;
 	}
 	
 	

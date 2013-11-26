@@ -5,7 +5,7 @@ public class EmbouchureController : TBehaviour {
 
 	public AudioClip[] First, Second, Third, Fourth, Fifth, Sixth, Seventh;
 	
-	public GUIText Note, Position, NoPo, NoNu;
+	public TextMesh Note, Position, NoPo, NoNu;
 	
 	private int height, slide, num;
 	private Ray ray;
@@ -16,6 +16,8 @@ public class EmbouchureController : TBehaviour {
 	{
 		base.Awake();
 		audio.clip = First[(int)transform.position.y];
+		AudioSource op;
+		
 		
 	}
 	
@@ -129,7 +131,10 @@ public class EmbouchureController : TBehaviour {
 		}
 		else
 		{
+			
 			audio.Play();
+			
+			
 		}
 		num = (int)embo.transform.position.y + 1;
 		slide = (int)trombone.transform.position.x + 4;
