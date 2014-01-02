@@ -5,12 +5,12 @@ public class MainGame : RtBehaviour {
 	
 	
 	
-	private GameObject ball;
+	//private GameObject ball;
 	//private int score = 0;
 	void Awake(){
 		GuiScore = new GUIText();
 		GuiHighScore = new GUIText();
-		ball = GameObject.Find("Ball");
+		//ball = GameObject.Find("Ball");
 	}
 	//public int speed = 2;
 	// Use this for initialization

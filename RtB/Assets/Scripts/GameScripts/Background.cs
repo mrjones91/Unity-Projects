@@ -4,21 +4,22 @@ using System.Collections;
 public class Background : RtBehaviour {
 
 	public Texture[] frames;
-	public float FPS;
-	private float secondsToWait, scrollSpeed, offset, xOffset, yOffset, x, y;
+	public float FPS, alpha;
+	private float secondsToWait, offset;
 	private bool inBounds;
 	private int currentFrame;
 	private Vector3 force;
 	Color bg;
-	
+
+
 	void Awake()
 	{
 		bg = Color.white;
-		bg.a = .30f;
+		bg.a = alpha;
 	}
 	void Start () 
 	{
-		scrollSpeed = 0.5f;
+		//scrollSpeed = 0.5f;
 		//xOffset = yOffset = Time.time * scrollSpeed;
 		currentFrame = 0;
 		secondsToWait = 1/FPS;
@@ -27,6 +28,7 @@ public class Background : RtBehaviour {
 			renderer.material.mainTexture = frames[currentFrame];
 		}
 		renderer.material.color = bg;
+		
 		StartCoroutine(Animate());
 		inBounds = true;
 		
@@ -43,7 +45,11 @@ public class Background : RtBehaviour {
 	{
 		if (gameObject.name != "Cube")
 		{
-			Scroll();
+			//Scroll();
+		}
+		if (bg.a != alpha)
+		{
+			bg.a = alpha;
 		}
 		//xOffset += Time.deltaTime;
 		//yOffset += Time.deltaTime;
@@ -54,11 +60,11 @@ public class Background : RtBehaviour {
 		//fix this shit. ugh
 		if (inBounds)
 		{
-			x = Mathf.Clamp(xOffset, 7f, -7f);
-			y = Mathf.Clamp(yOffset, 11f, -8f);
-			gameObject.transform.position = new Vector3(x, y, 12);
-			print ("X: " + x);
-			print ("Y: " + y);
+			//x = Mathf.Clamp(xOffset, 7f, -7f);
+			//y = Mathf.Clamp(yOffset, 11f, -8f);
+			//gameObject.transform.position = new Vector3(x, y, 12);
+			//print ("X: " + x);
+			//print ("Y: " + y);
 			
 		}
 		

@@ -7,7 +7,7 @@ public class MenuScene : RtBehaviour {
 	//private int gp;
 
 	
-	public GUIText HiScore;
+	public TextMesh HiScore;
 	public TextMesh PlayButton;
 	
 	bool displayed;
@@ -30,7 +30,7 @@ public class MenuScene : RtBehaviour {
 //			PlayerPrefs.SetInt("gamePlayed", gp);
 //		}PlayerPrefs.GetInt("gamesPlayed") != 0 && 
 //		
-		PlayerPrefs.SetInt("highScore", 10000);
+		PlayerPrefs.SetInt("highScore", 1912);
 //		if (PlayerPrefs.GetInt("highScore") > 0)
 //		{
 			HiScore.text = "Your High Score: " + PlayerPrefs.GetInt("highScore");

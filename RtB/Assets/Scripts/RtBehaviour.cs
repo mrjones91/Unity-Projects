@@ -9,6 +9,7 @@ public class RtBehaviour : MonoBehaviour {
 	public BlockGame game;
 	public ScoreScript score;
 	public PaddleMovement paddle;
+	public BallMovement ball;
 	
 	private bool sent;
 	

@@ -6,20 +6,18 @@ public class ScoreScript : MonoBehaviour {
 	private int score, hiScore, level;
 	
 	
-	public GUIText GuiScore;
-	public GUIText GuiHighScore;
+	public TextMesh GuiScore;
 	
 	
 	// Use this for initialization
 	void Start () {
 		
 		
-		score = 0;
+		score = PlayerPrefs.GetInt("Score");
 		level = PlayerPrefs.GetInt("currentlvl");
 
 		GuiScore.text = "Score: " + score;
-		if (PlayerPrefs.GetInt("highScore") != score )
-			GuiHighScore.text = "High Score: " + PlayerPrefs.GetInt("highScore");
+
 		
 	}
 	
@@ -38,7 +36,7 @@ public class ScoreScript : MonoBehaviour {
 		score += (int)points;
 		Debug.Log("score = " + score + " points = " + points);
 		GuiScore.text = "Score: " + score.ToString();
-		
+		PlayerPrefs.SetInt("Score", score);
 	}
 	
 	

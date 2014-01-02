@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PaddleMovement : RtBehaviour {
 	
-	
+	public Vector3 size;
 	private Ray ray;
 	private RaycastHit rayCastHit;
 	private Vector3 position;
@@ -12,12 +12,20 @@ public class PaddleMovement : RtBehaviour {
 	void Start () {
 		
 		//ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		 
+
 		position = new Vector3(0, -3, 0);
-		longPaddle = new Vector3 ( 2f, 0.2f, 1f);
+		longPaddle = new Vector3 ( 2.5f, 0.2f, 1f);
 		shortPaddle = new Vector3 ( .5f, 0.2f, 1f);
 	}
-	
+
+	public Vector3 Position
+	{
+		get 
+		{
+			return position;
+		}
+	}
+
 	// Update is called once per frame
 	protected override void Update () {
 		

@@ -3,17 +3,19 @@ using System.Collections;
 
 public class BlockGame : RtBehaviour {
 	public ScoreScript scoreKeeper;
-	
+	public Background bg;
 	private int bricks, level, lives;
 	private int[] LvlReq;
-	private GameObject ball;
+	private GameObject ballb, player;
 	private Vector3 ballPos;
 	
 
 	//private int score = 0;
 	// Use this for initialization
 	void Start () {
-		ball = GameObject.Find("Ball");
+		bg.renderer.material.color = Color.gray;
+		ballb = GameObject.Find("Ball");
+		player = GameObject.Find ("Paddle");
 		ballPos = new Vector3 (0, 1, 0);
 		bricks = 0;
 		LvlReq = new int[8];
@@ -41,6 +43,7 @@ public class BlockGame : RtBehaviour {
 		
 		if (PlayerPrefs.GetInt("BricksLeft") == 0 )
 		{
+
 			NextLevel(level + 1);
 			
 		}
@@ -65,9 +68,12 @@ public class BlockGame : RtBehaviour {
 		if (lives > 0)
 		{
 			// Reset positions
-			ball.transform.position = ballPos;
-			ball.rigidbody.velocity = new Vector3(3f, 5f, 0f);
-			
+			ballb.transform.position = ballPos;
+			ballb.rigidbody.velocity = new Vector3(3f, 5f, 0f);
+
+			player.transform.localScale = new Vector3(1.5f, 0.2f, 1f);
+			player.transform.position = paddle.Position;
+
 			lives--;
 			PlayerPrefs.SetInt("lives", lives);
 			

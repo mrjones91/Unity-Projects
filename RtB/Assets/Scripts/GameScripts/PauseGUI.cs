@@ -3,11 +3,12 @@ using System.Collections;
 
 public class PauseGUI : RtBehaviour {
 	
-	public TextMesh text;
+	public TextMesh text, hiScore;
 	
 	void Awake()
 	{
-		text.text = "";
+		text.text = hiScore.text = "";
+		hiScore.text = "";
 		//renderer.isVisible = false;
 	}
 	
@@ -15,6 +16,7 @@ public class PauseGUI : RtBehaviour {
 	{
 		base.OnPauseGame ();
 		text.text = "Paused";
+		hiScore.text = "Hi Score: " + PlayerPrefs.GetInt("highScore");
 		//renderer.isVisible = true;
 	}
 	
@@ -22,6 +24,7 @@ public class PauseGUI : RtBehaviour {
 	{
 		base.OnResumeGame();
 		text.text = "";
+		hiScore.text = "";
 		//renderer.isVisible = false;
 	}
 }
