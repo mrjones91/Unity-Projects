@@ -1,0 +1,20 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Triggers\Death.cs">
+    <Files>
+      <File FileName="Assets\Scripts\KeyScript.cs" Line="20" Column="70" />
+      <File FileName="Assets\Scripts\PlayerScript.cs" Line="120" Column="26" />
+      <File FileName="Assets\Scripts\CameraFollow.cs" Line="10" Column="35" />
+      <File FileName="Assets\Scripts\TouchController.cs" Line="80" Column="16" />
+      <File FileName="Assets\Scripts\DoorScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\FadeAway.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CreditCamera.cs" Line="34" Column="35" />
+      <File FileName="Assets\Scripts\Triggers\BeamUp.cs" Line="25" Column="24" />
+      <File FileName="Assets\Scripts\Triggers\Death.cs" Line="16" Column="38" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
