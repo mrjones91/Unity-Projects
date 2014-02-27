@@ -27,10 +27,12 @@ public class PaddlePowerUp : PowerUpController {
 				if (longer)
 				{
 					paddle.Grow(1);
+					score.AddScore(20);
 				}
 				else if (!longer)
 				{
 					paddle.Grow(0);
+					score.AddScore(60);
 				}
 			}
 		}

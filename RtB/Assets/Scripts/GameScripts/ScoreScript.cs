@@ -6,7 +6,7 @@ public class ScoreScript : MonoBehaviour {
 	private int score, hiScore, level;
 	
 	
-	public TextMesh GuiScore;
+	public TextMesh GuiScore, GuiLives;
 	
 	
 	// Use this for initialization
@@ -23,6 +23,7 @@ public class ScoreScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		GuiLives.text = "Lives: " + PlayerPrefs.GetInt("lives");
 		if (score > PlayerPrefs.GetInt("highScore"))
 			{
 				PlayerPrefs.SetInt("highScore", score);
@@ -30,9 +31,9 @@ public class ScoreScript : MonoBehaviour {
 	}
 	
 	public void AddScore(float points) {
-		//Debug.Log("score = " + score + " points = " + points);
-		points *= ( (level + 1) * 10);
-		//Debug.Log("score = " + score + " points = " + points);
+
+		//points *= ( (level + 1) * 10);
+
 		score += (int)points;
 		Debug.Log("score = " + score + " points = " + points);
 		GuiScore.text = "Score: " + score.ToString();

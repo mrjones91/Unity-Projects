@@ -38,6 +38,10 @@ public class BallPowerUp : PowerUpController {
 			{
 				Destroy (gameObject);
 				ball.Accelerate(accel);
+				if (speed)
+				{
+					score.AddScore(30);
+				}
 
 			}
 		}

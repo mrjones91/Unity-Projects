@@ -21,50 +21,78 @@ public class BrickScript : RtBehaviour {
 		case 1:
 			//figure out enums
 			//set color to Blue
-			//points = BrickType.Blue;
-			mesh.material.color = Color.blue;
-			points = 1;
+			//points = BrickType.
+			Color poo = new Color(228, 130 , 228);
+			mesh.material.color = poo;
+			points = 10;
 			//PlayerPrefs.SetInt("BricksLeft", (PlayerPrefs.GetInt("BricksLeft") + 1) );
 			break;
 		case 2:
 			//set color to Red
 			mesh.material.color = Color.red;
-			points = 1;
+			points = 10;
 			//PlayerPrefs.SetInt("BricksLeft", (PlayerPrefs.GetInt("BricksLeft") + 1) );
 			break;
 		case 3:
 			//set color to Yellow
 			mesh.material.color = Color.yellow;
-			points = 1;
+			points = 10;
 			PlayerPrefs.SetInt("BricksLeft", (PlayerPrefs.GetInt("BricksLeft") + 1) );
 			break;
 		case 4:
 			//set color to Green
 			mesh.material.color = Color.green;
-			points = 1.5f;
+			points = 10f;
 			//PlayerPrefs.SetInt("BricksLeft", (PlayerPrefs.GetInt("BricksLeft") + 1) );
 			break;
 		case 5:
 			//set color to Purple
-			Color purple = new Color(200, 100, 200, 50);
-			mesh.material.color = purple;
-			points = 1.5f;
-			//PlayerPrefs.SetInt("BricksLeft", (PlayerPrefs.GetInt("BricksLeft") + 1) );
+			mesh.material.color = new Color(128, 0, 128);
+			points = 10;
 			break;
+			//PlayerPrefs.SetInt("BricksLeft", (PlayerPrefs.GetInt("BricksLeft") + 1) );
+
 		case 6:
 			//set color to Brown
 			Color brown = new Color(100, 100, 100, 50);
 			mesh.material.color = brown;
-			points = 2;
+			points = 10;
 			//PlayerPrefs.SetInt("BricksLeft", (PlayerPrefs.GetInt("BricksLeft") + 1) );
 			break;
 		case 7:
 			//set color to White
 			mesh.material.color = Color.white;
-			points = 2;
+			points = 20;
 			//PlayerPrefs.SetInt("BricksLeft", (PlayerPrefs.GetInt("BricksLeft") + 1) );
 			break; 
+		case 10:
+			mesh.material.color = Color.gray;
+			points = 0;
+			break;
+		case 11:
+			mesh.material.color = Color.black;
+			points = 10;
+			break;
+		case 12: //Salmon Pink
+			mesh.material.color = new Color(255, 145, 164, 255);
+			points = 10;
+			break;
+		case 13: //Cream
+			mesh.material.color = new Color(255, 253, 208);
+			points = 10;
+			break;
+		case 14: //Crimson
+			mesh.material.color = new Color(220, 20, 60);
+			points = 10;
+			break;
+		case 15: //Old Gold
+			mesh.material.color = new Color (207, 181, 59);
+			points = 10;
+			break;
+		case 16: //royal blue
+			break;
 		default:
+			mesh.material.color = new Color(50, 50, 50);
 			points = 100;
 			Debug.Log("Fix " + gameObject.name + " you dummy!");
 			break;

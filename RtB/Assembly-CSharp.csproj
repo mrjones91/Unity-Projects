@@ -58,12 +58,14 @@
      <Compile Include="Assets\Scripts\PaddleMovement.cs" />
      <Compile Include="Assets\Scripts\PowerUps\BallPowerUp.cs" />
      <Compile Include="Assets\Scripts\PowerUps\ExplodePowerUp.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\ExtraLife.cs" />
      <Compile Include="Assets\Scripts\PowerUps\PaddlePowerUp.cs" />
      <Compile Include="Assets\Scripts\PowerUps\PowerUpController.cs" />
      <Compile Include="Assets\Scripts\PowerUps\SafetyBarController.cs" />
      <Compile Include="Assets\Scripts\PowerUps\SafetyPowerUp.cs" />
      <Compile Include="Assets\Scripts\PowerUps\ShootPowerUp.cs" />
      <Compile Include="Assets\Scripts\RtBehaviour.cs" />
+     <Compile Include="Assets\Scripts\SteelBrick.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

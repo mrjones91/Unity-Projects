@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class MenuScene : RtBehaviour {
@@ -15,7 +15,8 @@ public class MenuScene : RtBehaviour {
 	void Awake() {
 		
 		//Set level to 0
-		PlayerPrefs.SetInt("currentLvl", 0);
+		PlayerPrefs.SetInt("Score", 0);
+		PlayerPrefs.SetInt("currentLvl", 1);
 		PlayerPrefs.SetInt("lives", 2);
 		displayed = false;
 		
