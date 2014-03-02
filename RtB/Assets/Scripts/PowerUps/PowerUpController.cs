@@ -34,16 +34,18 @@ public class PowerUpController : RtBehaviour {
 			if (collider.bounds.Intersects(paddle.collider.bounds))
 			{
 				Destroy (gameObject);
+				ep.PowerHit();
 				score.AddScore(50f);
 			}
 		}
 	}
-	protected void OnCollisionEnter(Collision col)
+	protected virtual void OnCollisionEnter(Collision col)
 	{
 		if (col.gameObject.GetComponent("BallMovement"))
 		{
 
 		}
+		ep.PowerHit();
 	}
 	
 

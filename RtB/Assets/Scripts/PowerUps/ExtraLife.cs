@@ -24,6 +24,7 @@ public class ExtraLife : PowerUpController {
 			if (collider.bounds.Intersects(paddle.collider.bounds))
 			{
 				Destroy (gameObject);
+				ep.PowerHit();
 				PlayerPrefs.SetInt("lives", life);
 			}
 		}

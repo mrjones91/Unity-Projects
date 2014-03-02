@@ -37,14 +37,24 @@ public class BallPowerUp : PowerUpController {
 			if (collider.bounds.Intersects(paddle.collider.bounds))
 			{
 				Destroy (gameObject);
+				ep.PowerHit();
 				ball.Accelerate(accel);
 				if (speed)
 				{
-					score.AddScore(30);
+					//score.AddScore(30);
 				}
 
 			}
 		}
+	}
+
+	protected override void OnCollisionEnter(Collision col)
+	{
+		if (col.gameObject.GetComponent("BallMovement"))
+		{
+			
+		}
+		ep.PowerHit();
 	}
 
 

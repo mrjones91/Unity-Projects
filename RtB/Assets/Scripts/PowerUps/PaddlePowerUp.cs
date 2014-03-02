@@ -26,17 +26,32 @@ public class PaddlePowerUp : PowerUpController {
 				
 				if (longer)
 				{
+					ep.PowerHit();
 					paddle.Grow(1);
 					score.AddScore(20);
 				}
 				else if (!longer)
 				{
+					ep.PowerNoHit();
 					paddle.Grow(0);
 					score.AddScore(60);
 				}
 			}
 		}
 	
+	}
+
+	protected override void OnCollisionEnter(Collision col)
+	{
+
+		if (longer)
+		{
+			ep.PowerHit();
+		}
+		else
+		{
+			ep.PowerNoHit();
+		}
 	}
 
 }

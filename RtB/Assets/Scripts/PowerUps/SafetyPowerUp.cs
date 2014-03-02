@@ -38,11 +38,21 @@ public class SafetyPowerUp : PowerUpController {
 			if (collider.bounds.Intersects(paddle.collider.bounds))
 			{
 				Destroy (gameObject);
+				ep.PowerHit();
 				score.AddScore(15);
 				GameObject bar = (GameObject)Instantiate(safebar, new Vector3(-1f, -4f, 0f) , Quaternion.identity );
 			}
 		}
 	
+	}
+
+	protected override void OnCollisionEnter(Collision col)
+	{
+		if (col.gameObject.GetComponent("BallMovement"))
+		{
+			
+		}
+
 	}
 	
 	

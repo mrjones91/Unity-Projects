@@ -22,8 +22,8 @@ public class BrickScript : RtBehaviour {
 			//figure out enums
 			//set color to Blue
 			//points = BrickType.
-			Color poo = new Color(228, 130 , 228);
-			mesh.material.color = poo;
+			//Color poo = new Color(228, 130 , 228);
+			mesh.material.color = Color.blue;
 			points = 10;
 			//PlayerPrefs.SetInt("BricksLeft", (PlayerPrefs.GetInt("BricksLeft") + 1) );
 			break;
@@ -112,6 +112,7 @@ public class BrickScript : RtBehaviour {
 		{
 			power.gameObject.SetActive(true);
 		}
+
 	}
 	
 

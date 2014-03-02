@@ -10,6 +10,8 @@ public class RtBehaviour : MonoBehaviour {
 	public ScoreScript score;
 	public PaddleMovement paddle;
 	public BallMovement ball;
+	public MusicPlayer mp;
+	public EffectPlayer ep;
 	
 	private bool sent;
 	
@@ -30,7 +32,7 @@ public class RtBehaviour : MonoBehaviour {
 			BackButton();
 			
 		}
-		if ( Input.GetKeyDown(KeyCode.Menu) || Input.GetKey(KeyCode.Space) )
+		if ( Input.GetKeyDown(KeyCode.Menu) || Input.GetKeyDown(KeyCode.Space) )
 		{
 			Menu();
 		}
@@ -38,21 +40,25 @@ public class RtBehaviour : MonoBehaviour {
 	
 	protected virtual void BackButton()
 	{
+		PlayerPrefs.SetInt("Played", 1);
 		Application.Quit();
 	}
 	
 	protected virtual void Menu()
 	{
-		Object[] objects = FindObjectsOfType (typeof(GameObject));
-		foreach (GameObject go in objects)
+		GameObject[] objects = {GameObject.Find("Ball"), GameObject.Find("Paddle"), 
+			GameObject.Find ("Pause GUI"), GameObject.Find ("GuiHighScore")};
+
+		for (int i = 0; i < objects.Length; i++)
 		{
 			if (!sent)
 			{
-				go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+				objects[i].SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+				Debug.Log(objects[i].name + "Paused");
 			}
 			else if (sent)
 			{
-				go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
+				objects[i].SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
 			}
 		}
 	}

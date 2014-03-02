@@ -81,5 +81,9 @@ public class PaddleMovement : RtBehaviour {
 		{
 			
 		}
+		if (collision.gameObject.GetComponent< PowerUpController >() != null )
+		{
+			ep.PowerHit();
+		}
 	}
 }

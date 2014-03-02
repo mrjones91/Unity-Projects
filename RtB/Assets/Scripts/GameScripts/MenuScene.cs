@@ -31,11 +31,24 @@ public class MenuScene : RtBehaviour {
 //			PlayerPrefs.SetInt("gamePlayed", gp);
 //		}PlayerPrefs.GetInt("gamesPlayed") != 0 && 
 //		
-		PlayerPrefs.SetInt("highScore", 1912);
-//		if (PlayerPrefs.GetInt("highScore") > 0)
+//		if (PlayerPrefs.GetInt("highScore") < 1912)
 //		{
-			HiScore.text = "Your High Score: " + PlayerPrefs.GetInt("highScore");
+//			PlayerPrefs.SetInt("highScore", 1912);
 //		}
+		if (PlayerPrefs.GetInt("highScore") > 0)
+		{
+			HiScore.text = "High Score: " + PlayerPrefs.GetInt("highScore");
+		}
+		if (PlayerPrefs.GetInt("Played") == 0)
+		{
+			PlayerPrefs.SetInt("Music", 1);
+			PlayerPrefs.SetInt("Effects", 1);
+		}
+		else if (PlayerPrefs.GetInt("Played") == 1)
+		{
+			PlayerPrefs.SetInt("Music", PlayerPrefs.GetInt("Music"));
+			PlayerPrefs.SetInt("Effects", PlayerPrefs.GetInt("Effects"));
+		}
 		
 	}
 	// Use this for initialization
@@ -70,6 +83,12 @@ public class MenuScene : RtBehaviour {
 				else if (rayCastHit.transform.name == "newGamePLAY")
 				{
 					Application.LoadLevel("Level1");
+					//s.NextLevel(1);
+					
+				}
+				else if (rayCastHit.transform.name == "optionsPLAY")
+				{
+					Application.LoadLevel("Options");
 					//s.NextLevel(1);
 					
 				}

@@ -107,12 +107,27 @@ public class BallMovement : RtBehaviour
 		stuckX = rigidbody.velocity.x;
 		stuckY = rigidbody.velocity.y;
 		print (rigidbody.velocity);
+		if (!col.gameObject.GetComponent<BrickScript>())
+		{
+			if (col.gameObject.GetComponent<SteelBrick>())
+			{
+				ep.SteelHit();
+			}
+			else
+			{
+				ep.BallHit();
+			}
+		}
 
+		else
+		{
+			ep.BrickBreak();
+		}
 	}
 	
 	protected override void OnPauseGame ()
 	{
-		
+
 		//force = rigidbody.velocity;
 		//rigidbody.velocity = Vector3.zero;
 		base.OnPauseGame ();
