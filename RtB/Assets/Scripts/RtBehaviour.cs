@@ -12,15 +12,34 @@ public class RtBehaviour : MonoBehaviour {
 	public BallMovement ball;
 	public MusicPlayer mp;
 	public EffectPlayer ep;
-	
+	private GameObject menu;
+
 	private bool sent;
 	
 	protected PowerUpController powerUp;
 	protected BrickScript brick;
-	protected bool paused;
+	protected bool paused, end;
+
+	private Ray ray;
+	private RaycastHit rayCastHit;
 	
+	public virtual bool Paused
+	{
+		get
+		{
+			return paused;
+		}
+		set
+		{
+			paused = value;
+		}
+	}
 	// Use this for initialization
 	void Start () {
+		menu = GameObject.Find("Menu");
+
+
+		end = false;
 	
 	}
 	
@@ -36,6 +55,44 @@ public class RtBehaviour : MonoBehaviour {
 		{
 			Menu();
 		}
+
+		if (game)
+		{
+			if (game.Lives < 0)
+			{
+				OnEndGame();
+			}
+
+			if (Input.GetMouseButtonDown(0))
+			{
+				if (paused == true || end == true)
+				{
+					ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+					if (Physics.Raycast(ray, out rayCastHit) )
+					{
+						if (rayCastHit.transform.name == "Menu")
+						{
+							//end = paused = false;
+							if (menu.text == "Quit to Menu?")
+							{
+								Application.LoadLevel("Menu");
+								//OnEndGame();
+							}
+
+
+							if (menu.GetComponent<TextMesh>().text == "Try Again?")
+							{
+								Application.LoadLevel("Menu");
+							}
+							
+						}
+					}
+				}
+			}
+		}
+
+
+
 	}
 	
 	protected virtual void BackButton()
@@ -46,21 +103,25 @@ public class RtBehaviour : MonoBehaviour {
 	
 	protected virtual void Menu()
 	{
-		GameObject[] objects = {GameObject.Find("Ball"), GameObject.Find("Paddle"), 
-			GameObject.Find ("Pause GUI"), GameObject.Find ("GuiHighScore")};
+		//GameObject[] objects = {GameObject.Find("Ball"), GameObject.Find("Paddle"), 
+		//	GameObject.Find ("Pause GUI"), GameObject.Find ("GuiHighScore")};
+		//
+		//for (int i = 0; i < objects.Length; i++)
+		//{
 
-		for (int i = 0; i < objects.Length; i++)
-		{
+		//can get rid of sent and just use paused, but not sure if want
 			if (!sent)
 			{
-				objects[i].SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-				Debug.Log(objects[i].name + "Paused");
+			OnPauseGame();
+				//objects[i].SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+				//Debug.Log(objects[i].name + "Paused");
 			}
 			else if (sent)
 			{
-				objects[i].SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
+			OnResumeGame();
+				//objects[i].SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
 			}
-		}
+		//}
 	}
 	
 	protected virtual void OnPauseGame()
@@ -74,5 +135,13 @@ public class RtBehaviour : MonoBehaviour {
 		sent = false;
 		paused = false;
 		Time.timeScale = 1;
+	}
+	protected virtual void OnEndGame()
+	{
+		//sent = false;
+		end = true;
+		paused = true;
+		Time.timeScale = 1;
+
 	}
 }

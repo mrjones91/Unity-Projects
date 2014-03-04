@@ -3,17 +3,7 @@ using System.Collections;
 
 public class BallMovement : RtBehaviour 
 {
-	/*
-	 * 
-	 * Awake()
-	 * {
-	 * 	rigidbody.AddForce(4, 4, 0, forcemode.impulse);
-	 * }
-	 * 
-	 * 
-	 */
 
-	
 	private Vector3 acceleration, decel;
 	private Vector3 force;
 	private float stuckX, stuckY;
@@ -22,9 +12,8 @@ public class BallMovement : RtBehaviour
 	void Awake() {
  
 		//speed = 2;
-		acceleration = new Vector3(.15f, .15f, 0);
-		force = new Vector3(3f, 5f, 0f);
-		rigidbody.velocity = force;
+
+
 
 		//constantForce.force = new Vector3(-.5f, -1.5f, 0f);
 		
@@ -93,12 +82,12 @@ public class BallMovement : RtBehaviour
 		if (axis == 0)
 		{
 			rigidbody.AddForce(0f, -1f, 0f);
-			print ("YYYY");
+			//print ("YYYY");
 		}
 		else if (axis == 1)
 		{
 			rigidbody.AddForce(-0.5f, 0f, 0f);
-			print ("XXXX");
+			//print ("XXXX");
 		}
 	}
 	void OnCollisionEnter(Collision col)
@@ -106,22 +95,19 @@ public class BallMovement : RtBehaviour
 		
 		stuckX = rigidbody.velocity.x;
 		stuckY = rigidbody.velocity.y;
-		print (rigidbody.velocity);
-		if (!col.gameObject.GetComponent<BrickScript>())
+		//print (rigidbody.velocity);
+		if (col.gameObject.GetComponent<SteelBrick>())
 		{
-			if (col.gameObject.GetComponent<SteelBrick>())
-			{
-				ep.SteelHit();
-			}
-			else
-			{
-				ep.BallHit();
-			}
+			ep.SteelHit();
 		}
 
-		else
+		else if (col.gameObject.GetComponent<BrickScript>())
 		{
 			ep.BrickBreak();
+		}
+		else
+		{
+			ep.BallHit();
 		}
 	}
 	
@@ -132,7 +118,22 @@ public class BallMovement : RtBehaviour
 		//rigidbody.velocity = Vector3.zero;
 		base.OnPauseGame ();
 	}
-	
+
+	public void OnStartGame()
+	{
+		paused = true;
+		gameObject.collider.isTrigger = true;
+	}
+
+	public void OnRelease()
+	{
+		paused = false;
+		gameObject.collider.isTrigger = false;
+		acceleration = new Vector3(.15f, .15f, 0);
+		force = new Vector3(3f, 5f, 0f);
+		rigidbody.velocity = force;
+	}
+
 	protected override void OnResumeGame ()
 	{
 		base.OnResumeGame ();

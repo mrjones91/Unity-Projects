@@ -8,15 +8,27 @@ public class BlockGame : RtBehaviour {
 	private int[] LvlReq;
 	private GameObject ballb, player;
 	private Vector3 ballPos;
-	
+	private bool inPlay;
 
-	//private int score = 0;
-	// Use this for initialization
+	private Ray ray;
+	private RaycastHit rayCastHit;
+
+	public int Lives
+	{
+		get
+		{
+			return lives;
+		}
+	}
 	void Start () {
 		bg.renderer.material.color = Color.gray;
 		ballb = GameObject.Find("Ball");
 		player = GameObject.Find ("Paddle");
-		ballPos = new Vector3 (0, 1, 0);
+		ballPos = player.transform.position + new Vector3(.1f, .75f, 0f);
+
+		inPlay = false;
+		//ball.SendMessage("OnPauseGame");
+
 		bricks = 0;
 		LvlReq = new int[4];
 		LvlReq[0] = 28;
@@ -60,7 +72,24 @@ public class BlockGame : RtBehaviour {
 	// Update is called once per frame
 	protected override void Update () {
 		base.Update();
-		
+
+		if(inPlay == false)
+		{
+			ball.transform.position = player.transform.position + new Vector3(.3f, .5f, 0f);
+		}
+
+		if (Input.GetMouseButtonUp(0))
+		{
+			if (inPlay == false)
+			{
+				inPlay = true;
+				ball.SendMessage("OnRelease");
+
+
+			}
+		}
+
+
 		//if (PlayerPrefs.GetInt("BricksLeft") == 0 )
 		{
 
@@ -91,19 +120,23 @@ public class BlockGame : RtBehaviour {
 		if (lives > 0)
 		{
 			// Reset positions
-			ballb.transform.position = ballPos;
-			ballb.rigidbody.velocity = new Vector3(3f, 5f, 0f);
+			inPlay = false;
+			ball.transform.position = ballPos;
+			ball.OnStartGame();
+			//ball.rigidbody.velocity = new Vector3(3f, 5f, 0f);
 
 			player.transform.localScale = new Vector3(1.5f, 0.2f, 1f);
 			player.transform.position = paddle.Position;
 
 			lives--;
 			PlayerPrefs.SetInt("lives", lives);
+
 			
 	}
 		else{
+			lives = -1;
 		Debug.Log(PlayerPrefs.GetInt("highScore"));
-			Application.LoadLevel("Menu");
+			//Application.LoadLevel("Menu");
 		}
 	}
 		

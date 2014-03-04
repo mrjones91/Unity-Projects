@@ -35,7 +35,7 @@ public class EffectPlayer : RtBehaviour {
 		if (playing)
 		{
 			effect.clip = brickPlop;
-			effect.PlayOneShot(brickPlop, .38f);
+			effect.PlayOneShot(brickPlop, .45f);
 		}
 	}
 
@@ -44,7 +44,7 @@ public class EffectPlayer : RtBehaviour {
 		if (playing)
 		{
 			effect.clip = ballPong;
-			effect.PlayOneShot(ballPong, .38f);
+			effect.PlayOneShot(ballPong, .45f);
 		}
 	}
 
@@ -53,7 +53,7 @@ public class EffectPlayer : RtBehaviour {
 		if (playing)
 		{
 			effect.clip = steelDunk;
-			effect.PlayOneShot(steelDunk, .38f);
+			effect.PlayOneShot(steelDunk, .48f);
 		}
 	}
 
