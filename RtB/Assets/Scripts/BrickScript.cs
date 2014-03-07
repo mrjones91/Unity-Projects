@@ -9,7 +9,7 @@ public class BrickScript : RtBehaviour {
 	public PowerUpController power;
 	
 	//public MainGame mainGameScript;
-	void Start () {
+	protected virtual void Start () {
 		
 		
 		//mesh = (MeshRenderer)(gameObject.GetComponent("Mesh"));

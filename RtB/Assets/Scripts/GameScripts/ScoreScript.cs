@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ScoreScript : MonoBehaviour {
 	
-	private int score, hiScore, level;
+	private int score, hiScore, level, bestScore;
 	
 	
 	public TextMesh GuiScore, GuiLives;
@@ -15,7 +15,7 @@ public class ScoreScript : MonoBehaviour {
 		
 		score = PlayerPrefs.GetInt("Score");
 		level = PlayerPrefs.GetInt("currentlvl");
-
+		bestScore = PlayerPrefs.GetInt("best");
 		GuiScore.text = "Score: " + score;
 
 		
@@ -28,6 +28,10 @@ public class ScoreScript : MonoBehaviour {
 			{
 				PlayerPrefs.SetInt("highScore", score);
 			}
+		else if (score > PlayerPrefs.GetInt("best"))
+		{
+			PlayerPrefs.SetInt("best", score);
+		}
 	}
 	
 	public void AddScore(float points) {

@@ -12,7 +12,7 @@ public class RtBehaviour : MonoBehaviour {
 	public BallMovement ball;
 	public MusicPlayer mp;
 	public EffectPlayer ep;
-	private GameObject menu;
+	//private GameObject menuB;
 
 	private bool sent;
 	
@@ -36,7 +36,7 @@ public class RtBehaviour : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-		menu = GameObject.Find("Menu");
+		//menu = GameObject.Find("Menu");
 
 
 		end = false;
@@ -70,20 +70,19 @@ public class RtBehaviour : MonoBehaviour {
 					ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 					if (Physics.Raycast(ray, out rayCastHit) )
 					{
-						if (rayCastHit.transform.name == "Menu")
+						if (rayCastHit.transform.name == "Menu1")
 						{
-							//end = paused = false;
-							if (menu.text == "Quit to Menu?")
-							{
-								Application.LoadLevel("Menu");
-								//OnEndGame();
-							}
 
-
-							if (menu.GetComponent<TextMesh>().text == "Try Again?")
-							{
-								Application.LoadLevel("Menu");
-							}
+							OnResumeGame();
+							Application.LoadLevel("Menu");
+														
+						}
+						else if (rayCastHit.transform.name == "Menu2")
+						{
+							OnResumeGame();
+							PlayerPrefs.SetInt("lives", 2);
+							PlayerPrefs.SetInt("Score", 0);
+							Application.LoadLevel("Level1");
 							
 						}
 					}
@@ -134,6 +133,7 @@ public class RtBehaviour : MonoBehaviour {
 	{
 		sent = false;
 		paused = false;
+		end = false;
 		Time.timeScale = 1;
 	}
 	protected virtual void OnEndGame()

@@ -64,7 +64,7 @@ public class BlockGame : RtBehaviour {
 			level = PlayerPrefs.GetInt("currentlvl");
 			break;
 		default:
-			print ("not a playable level");
+			//print ("not a playable level");
 			break;
 		}
 	}
@@ -135,7 +135,7 @@ public class BlockGame : RtBehaviour {
 	}
 		else{
 			lives = -1;
-		Debug.Log(PlayerPrefs.GetInt("highScore"));
+		//Debug.Log(PlayerPrefs.GetInt("highScore"));
 			//Application.LoadLevel("Menu");
 		}
 	}

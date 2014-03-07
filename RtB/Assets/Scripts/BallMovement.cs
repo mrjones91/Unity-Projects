@@ -30,12 +30,13 @@ public class BallMovement : RtBehaviour
 	{
 		if (!paused)
 		{
-			if (transform.position.y < -6)
+			if (transform.position.y < -6 || transform.position.x > 3.08 || transform.position.x < -3.08)
 			{
 				game.GameOver();
 			}
 
-			//rigidbody.transform.position += acceleration;
+			//rigidbody.transform.position += new Vector3(0, .05f);
+			//rigidbody.velocity += ;
 			if (Mathf.Abs(stuckX) == Mathf.Abs(rigidbody.velocity.x) )
 			{
 				UnStick();
@@ -129,7 +130,7 @@ public class BallMovement : RtBehaviour
 	{
 		paused = false;
 		gameObject.collider.isTrigger = false;
-		acceleration = new Vector3(.15f, .15f, 0);
+		acceleration = new Vector3(.15f, .2f, 0);
 		force = new Vector3(3f, 5f, 0f);
 		rigidbody.velocity = force;
 	}
