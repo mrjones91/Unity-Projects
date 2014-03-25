@@ -34,31 +34,31 @@ public class BlockGame : RtBehaviour {
 		LvlReq[0] = 28;
 		LvlReq[1] = 28;
 		LvlReq[2] = 25;
-		LvlReq[3] = 25;
+		LvlReq[3] = 27;
 
 		
 		lives = PlayerPrefs.GetInt("lives");
 
-		Debug.Log("Current Level: " + level + "Lives: " + lives + "BricksLeft" + LvlReq[level]);
+		//Debug.Log("Current Level: " + level + "Lives: " + lives + "BricksLeft" + LvlReq[level]);
 		
 		//GuiScore.text = "Score: " + score.ToString();
 		//InvokeRepeating("UpdateScore", 0.05f, 0.05f);
 		switch (Application.loadedLevelName)
 		{
 		case "Level1":
-			print (Application.loadedLevelName);
+			//print (Application.loadedLevelName);
 			PlayerPrefs.SetInt("BricksLeft", LvlReq[0]);
 			PlayerPrefs.SetInt("currentlvl", 1);
 			level = PlayerPrefs.GetInt("currentlvl");
 			break;
 		case "Level2":
-			print (Application.loadedLevelName);
+			//print (Application.loadedLevelName);
 			PlayerPrefs.SetInt("BricksLeft", LvlReq[1]);
 			PlayerPrefs.SetInt("currentlvl", 2);
 			level = PlayerPrefs.GetInt("currentlvl");
 			break;
 		case "Level3":
-			print (Application.loadedLevelName);
+			//print (Application.loadedLevelName);
 			PlayerPrefs.SetInt("BricksLeft", LvlReq[2]);
 			PlayerPrefs.SetInt("currentlvl", 3);
 			level = PlayerPrefs.GetInt("currentlvl");
@@ -75,7 +75,11 @@ public class BlockGame : RtBehaviour {
 
 		if(inPlay == false)
 		{
-			ball.transform.position = player.transform.position + new Vector3(.3f, .5f, 0f);
+			ball.transform.position = player.transform.position + new Vector3(.3f, .75f, 0f);
+		}
+		else
+		{
+			//player.transform.position = new Vector3(ball.transform.position.x, -3f, 0f);
 		}
 
 		if (Input.GetMouseButtonUp(0))
@@ -104,14 +108,26 @@ public class BlockGame : RtBehaviour {
 	public void NextLevel(int _level)
 	{
 		//level = _level;
-		Application.LoadLevel("Level" + _level);
+		if (_level == 4)
+		{
+			Application.LoadLevel("Credits");
+		}
+		else if(_level == 5)
+		{
+			Application.LoadLevel("Menu");
+		}
+		else
+		{
+			Application.LoadLevel("Level" + _level);
+		}
 		PlayerPrefs.SetInt("currentLvl", _level);
+
 		//level = PlayerPrefs.GetInt("currentlvl");
 	}
 	
 	public void AddBrick(int brick){
 		bricks += brick;
-		print ("level: " + level + " Bricks broken: " + bricks + "   Bricks Left: " + LvlReq[level]) ;
+		//print ("level: " + level + " Bricks broken: " + bricks + "   Bricks Left: " + LvlReq[level]) ;
 		if (bricks == LvlReq[level])
 			NextLevel(PlayerPrefs.GetInt("currentLvl") + 1);
 	}
@@ -128,7 +144,7 @@ public class BlockGame : RtBehaviour {
 			player.transform.localScale = new Vector3(1.5f, 0.2f, 1f);
 			player.transform.position = paddle.Position;
 
-			lives--;
+			lives = PlayerPrefs.GetInt("lives") - 1;
 			PlayerPrefs.SetInt("lives", lives);
 
 			

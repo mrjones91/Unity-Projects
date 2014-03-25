@@ -43,18 +43,29 @@ public class MusicPlayer : RtBehaviour {
 			playing = false;
 		}
 
-		if (playing)
+		if (playing )
 		{
-			if (music.clip = songs[songN])
+			//if (music.clip == songs[songN])
 			{
 				if (!music.isPlaying)
 				{
 					songN++;
-					if (songN > songs.Length - 1)
+					if ( songN > songs.Length || (songN >= 2 && (game.End == false)) )
 					{
 						songN = 0;
 					}
-					music.clip = songs[songN];
+					else if(songN < 2)
+					{
+
+					}
+					else
+					{
+						songN = 2;
+					}
+					if (songN < songs.Length)
+					{
+						music.clip = songs[songN];
+					}
 					music.Play();
 				}
 			}
@@ -63,6 +74,14 @@ public class MusicPlayer : RtBehaviour {
 		{
 			music.Stop();
 		}
+	}
+
+	protected override void OnEndGame ()
+	{
+		base.OnEndGame ();
+		//music.Stop();
+		//music.clip = wine;
+		//music.Play ();
 	}
 
 

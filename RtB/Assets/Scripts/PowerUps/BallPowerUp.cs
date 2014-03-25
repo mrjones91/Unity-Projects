@@ -5,16 +5,19 @@ public class BallPowerUp : PowerUpController {
 
 	public bool speed;
 	private Vector3 accel;
+	private int spd;
 
 	public override void Start ()
 	{
 		base.Start ();
 		if (speed)
 		{
+			spd = 1;
 			accel = new Vector3(4.5f, 7f, 0f);
 		}
 		else
 		{
+			spd = -1;
 			accel = new Vector3(2f, 3f, 0f);
 		}
 	}
@@ -38,10 +41,14 @@ public class BallPowerUp : PowerUpController {
 			{
 				Destroy (gameObject);
 				ep.PowerHit();
-				ball.Accelerate(accel);
+				ball.spd = spd;
 				if (speed)
 				{
-					//score.AddScore(30);
+					score.AddScore(30);
+				}
+				else
+				{
+					score.AddScore(35);
 				}
 
 			}

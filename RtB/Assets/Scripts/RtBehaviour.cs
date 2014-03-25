@@ -12,6 +12,7 @@ public class RtBehaviour : MonoBehaviour {
 	public BallMovement ball;
 	public MusicPlayer mp;
 	public EffectPlayer ep;
+	public AudioClip win;
 	//private GameObject menuB;
 
 	private bool sent;
@@ -34,6 +35,13 @@ public class RtBehaviour : MonoBehaviour {
 			paused = value;
 		}
 	}
+	public virtual bool End
+	{
+		get
+		{
+			return end;
+		}
+	}
 	// Use this for initialization
 	void Start () {
 		//menu = GameObject.Find("Menu");
@@ -48,13 +56,33 @@ public class RtBehaviour : MonoBehaviour {
 	
 		if ( Input.GetKeyDown(KeyCode.Escape) )
 		{
-			BackButton();
-			
+			if (Application.loadedLevelName=="Menu")
+			{
+				BackButton();
+			}
+			else if (Application.loadedLevelName == "Options" || Application.loadedLevelName == "Credits")
+			{
+				Application.LoadLevel("Menu");
+			}
+			else if (Application.loadedLevelName=="Level1" || Application.loadedLevelName=="Level2" || Application.loadedLevelName=="Level3")
+			{
+				if (end)
+				{
+					Application.LoadLevel("Menu");
+				}
+				else
+				{
+					Menu ();
+				}
+			}
+
 		}
 		if ( Input.GetKeyDown(KeyCode.Menu) || Input.GetKeyDown(KeyCode.Space) )
 		{
 			Menu();
 		}
+
+		//if (
 
 		if (game)
 		{
@@ -70,18 +98,19 @@ public class RtBehaviour : MonoBehaviour {
 					ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 					if (Physics.Raycast(ray, out rayCastHit) )
 					{
-						if (rayCastHit.transform.name == "Menu1")
+						if (rayCastHit.transform.name == "Menu1" && (rayCastHit.transform.collider.isTrigger == false) )
 						{
 
 							OnResumeGame();
 							Application.LoadLevel("Menu");
 														
 						}
-						else if (rayCastHit.transform.name == "Menu2")
+						else if (rayCastHit.transform.name == "Menu2" && (rayCastHit.transform.collider.isTrigger == false))
 						{
 							OnResumeGame();
 							PlayerPrefs.SetInt("lives", 2);
 							PlayerPrefs.SetInt("Score", 0);
+							PlayerPrefs.SetInt("currentLvl", 1);
 							Application.LoadLevel("Level1");
 							
 						}

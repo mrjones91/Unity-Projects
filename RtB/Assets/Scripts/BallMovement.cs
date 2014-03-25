@@ -3,17 +3,18 @@ using System.Collections;
 
 public class BallMovement : RtBehaviour 
 {
-
-	private Vector3 acceleration, decel;
+	public Vector3 acceleration;
+	private Vector3 decel;
 	private Vector3 force;
 	private float stuckX, stuckY;
+	public int spd;
 
 	
 	void Awake() {
  
 		//speed = 2;
 
-
+		spd = 0;
 
 		//constantForce.force = new Vector3(-.5f, -1.5f, 0f);
 		
@@ -22,7 +23,7 @@ public class BallMovement : RtBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		//InvokeRepeating("Accelerate", 5, 10);
+
 	}
 	
 	// Update is called once per frame
@@ -45,9 +46,40 @@ public class BallMovement : RtBehaviour
 			{
 				UnStick();
 			}
+
+			if (rigidbody.velocity.x < 1.8f || rigidbody.velocity.y < 2.8f)
+			{
+				InvokeRepeating("Moving", 0f, 10f);
+			}
+
 		}
 		
 	}
+
+	void Moving()
+	{
+		switch(spd)
+		{
+		case -1: force = new Vector3(2f, 3f, 0f);
+			break;
+		case 0: force = new Vector3(3f, 5f, 0f);
+			break;
+		case 1: force = new Vector3(4.5f, 7f, 0f);
+			break;
+		}
+
+		if( ( (rigidbody.velocity.x < 0) && (force.x > 0)) || ( (rigidbody.velocity.x > 0) && (force.x < 0) ) )
+		{
+			force.x *= -1;
+		}
+		if( ( (rigidbody.velocity.y < 0) && (force.y > 0)) || ( (rigidbody.velocity.y > 0) && (force.y < 0) ) )
+		{
+			force.y *= -1;
+		}
+		//force = new Vector3(3f, 5f, 0f);
+		rigidbody.velocity = force;
+	}
+
 
 	void Accelerate()
 	{
@@ -70,6 +102,7 @@ public class BallMovement : RtBehaviour
 			accel.y *= -1;
 		}
 		rigidbody.velocity = accel;
+		acceleration = accel;
 	}
 
 	void UnStick()
@@ -118,26 +151,30 @@ public class BallMovement : RtBehaviour
 		//force = rigidbody.velocity;
 		//rigidbody.velocity = Vector3.zero;
 		base.OnPauseGame ();
+		CancelInvoke("Moving");
 	}
 
 	public void OnStartGame()
 	{
 		paused = true;
 		gameObject.collider.isTrigger = true;
+		CancelInvoke("Moving");
 	}
 
 	public void OnRelease()
 	{
 		paused = false;
 		gameObject.collider.isTrigger = false;
-		acceleration = new Vector3(.15f, .2f, 0);
+		//acceleration = new Vector3(.15f, .2f, 0);
 		force = new Vector3(3f, 5f, 0f);
 		rigidbody.velocity = force;
+		InvokeRepeating("Moving", 1, .25f);
 	}
 
 	protected override void OnResumeGame ()
 	{
 		base.OnResumeGame ();
+		InvokeRepeating("Moving", 1, .25f);
 		//rigidbody.AddForce(force);
 	}
 	

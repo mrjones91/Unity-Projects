@@ -37,7 +37,7 @@ public class MenuScene : RtBehaviour {
 //		}
 		if (PlayerPrefs.GetInt("highScore") > 0)
 		{
-			HiScore.text = "High Score: " + PlayerPrefs.GetInt("highScore");
+			HiScore.text = "High Score: " + PlayerPrefs.GetInt("best");
 		}
 		if (PlayerPrefs.GetInt("Played") == 0)
 		{

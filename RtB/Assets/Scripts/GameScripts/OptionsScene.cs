@@ -41,6 +41,7 @@ public class OptionsScene : RtBehaviour {
 			ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			if (Physics.Raycast(ray, out rayCastHit) )
 			{
+				PlayerPrefs.SetInt("Played", 1);
 				if (rayCastHit.transform.name == "fxPLAY")
 				{
 					fx = !fx;
@@ -66,14 +67,31 @@ public class OptionsScene : RtBehaviour {
 					{
 						mT.text = "Music: On";
 						PlayerPrefs.SetInt("Music", 1);
+						mp.playing = true;
 					}
 					else if (!ms)
 					{
+						mp.playing = false;
 						mT.text = "Music: Off";
 						PlayerPrefs.SetInt("Music", 0);
 					}
 					
 				}
+				else if (rayCastHit.transform.name == "ClearPlay")
+				{
+					mT.text = "Music: On";
+					PlayerPrefs.SetInt("Music", 1);
+					mp.playing = true;
+					fT.text = "Sound Effects: On";
+					PlayerPrefs.SetInt("Effects", 1);
+					ep.playing = true;
+					fx = ms = true;
+					PlayerPrefs.SetInt("best", 0);
+					PlayerPrefs.SetInt("Played", 0);
+					PlayerPrefs.SetInt("gamesPlayed", 0);
+					ep.PowerNoHit();
+				}
+
 				else if (rayCastHit.transform.name == "playPLAY")
 				{
 					Application.LoadLevel("Level1");

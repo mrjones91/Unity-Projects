@@ -39,7 +39,7 @@ public class ScoreScript : MonoBehaviour {
 		//points *= ( (level + 1) * 10);
 
 		score += (int)points;
-		Debug.Log("score = " + score + " points = " + points);
+		//Debug.Log("score = " + score + " points = " + points);
 		GuiScore.text = "Score: " + score.ToString();
 		PlayerPrefs.SetInt("Score", score);
 	}
